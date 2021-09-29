@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "56767924308",
+    "project_id": "e-commerce-app-0",
+    "storage_bucket": "e-commerce-app-0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56767924308:android:044cac64a0b86cfc1245c1",
+        "android_client_info": {
+          "package_name": "com.meyo.e_commerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "56767924308-o95hv5rqokefv4l4mn52q3rdofoqq1el.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.meyo.e_commerce_app",
+            "certificate_hash": "4e071844af107a35f65dc8d138cfe0f59ef7cd82"
+          }
+        },
+        {
+          "client_id": "56767924308-cgmm9v5e746qe1uati2f4acfgrjob8es.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRr1mm7qDHdd10sd9YG1mma4FWIFKOsAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "56767924308-cgmm9v5e746qe1uati2f4acfgrjob8es.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
