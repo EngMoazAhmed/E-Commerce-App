@@ -12,7 +12,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthViewModel extends GetxController {
-  
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String? email, password, name;
@@ -26,8 +25,6 @@ class AuthViewModel extends GetxController {
     super.onInit();
     _user.bindStream(_auth.authStateChanges());
   }
-
-
 
   //Google SignIn
   void signInWithGoogle() async {
@@ -125,7 +122,7 @@ class AuthViewModel extends GetxController {
               await _saveUserToFirestore(userCredential));
 
       //Navigate to Home View
-      Get.offAll(() =>  HomeView());
+      Get.offAll(() => HomeView());
     } on FirebaseAuthException catch (e) {
       // if (e.code == 'weak-password') {
       //   print('The password provided is too weak.');
@@ -150,7 +147,7 @@ class AuthViewModel extends GetxController {
   }
 
   //FirebaseException Handling
-  void handleFirebaseAuthException(String? errorCode) {
+  static void handleFirebaseAuthException(String? errorCode) {
     String? errorMessage;
     switch (errorCode) {
       case "ERROR_EMAIL_ALREADY_IN_USE":

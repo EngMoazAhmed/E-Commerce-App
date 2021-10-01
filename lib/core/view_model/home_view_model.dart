@@ -1,32 +1,52 @@
-import 'package:e_commerce_app/view/account/account_view.dart';
-import 'package:e_commerce_app/view/cart/cart_view.dart';
-import 'package:e_commerce_app/view/home/home_view.dart';
-import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce_app/core/services/home_service.dart';
+import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
+import 'package:e_commerce_app/model/category_model.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 class HomeViewModel extends GetxController {
-  int _navBarIndex = 0;
-  Widget _currentScreen = HomeView();
+  @override
+  void onInit() {
+    super.onInit();
+    getCategories();
+  }
 
-  get currentScreen => _currentScreen;
-  get navBarIndex => _navBarIndex;
+  final List<CategoryModel> _categoryModel = [];
+  List<CategoryModel> get categoryModel => _categoryModel;
+  final ValueNotifier<bool> _isLoading = ValueNotifier(false);
+  ValueNotifier<bool> get isLoading => _isLoading;
 
-  void changeNavBarIndex(int newIndex) {
-    _navBarIndex = newIndex;
-    switch (navBarIndex) {
-      case 0:
-        _currentScreen = HomeView();
-        break;
-      case 1:
-        _currentScreen = CartView();
-        break;
-      case 2:
-        _currentScreen = AccountView();
-        break;
-      default:
-        _currentScreen = HomeView();
-        break;
+  Future<void> getCategories() async {
+    _isLoading.value = true;
+    try {
+      await HomeService().getCategory().then(
+        (value) {
+          // print(value.docs[0].data());
+          for (QueryDocumentSnapshot<Object?> element in value) {
+            _categoryModel.add(
+              CategoryModel.fromJson(element.data() as Map<String, dynamic>),
+            );
+          }
+          _isLoading.value = false;
+          update();
+          // print(categoryModel.length);
+        },
+      );
+    } on PlatformException catch (e) {
+      AuthViewModel.handleFirebaseAuthException(e.code);
+      _isLoading.value = false;
+    } on FirebaseException catch (e) {
+      AuthViewModel.handleFirebaseAuthException(e.code);
+      _isLoading.value = false;
+    } catch (e) {
+      AuthViewModel.handleFirebaseAuthException(e.toString());
+      _isLoading.value = false;
     }
-    update();
+
+    // finally {
+    //   _isLoading.value = false;
+    // }
   }
 }

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/view_model/home_view_model.dart';
+import 'package:e_commerce_app/core/view_model/nav_bar_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -7,7 +7,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeViewModel>(
+    return GetBuilder<NavBarViewModel>(
       builder: (controller) => BottomNavigationBar(
         selectedItemColor: Colors.black,
         backgroundColor: Colors.grey.shade100,

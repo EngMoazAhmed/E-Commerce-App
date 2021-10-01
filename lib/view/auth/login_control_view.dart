@@ -1,5 +1,5 @@
 import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
-import 'package:e_commerce_app/core/view_model/home_view_model.dart';
+import 'package:e_commerce_app/core/view_model/nav_bar_view_model.dart';
 import 'package:e_commerce_app/view/account/account_view.dart';
 import 'package:e_commerce_app/view/auth/login_view.dart';
 import 'package:e_commerce_app/view/cart/cart_view.dart';
@@ -17,7 +17,7 @@ class LoginControlView extends GetWidget<AuthViewModel> {
       return controller.user == null
           ? LoginView()
           : Scaffold(
-              body: GetBuilder<HomeViewModel>(
+              body: GetBuilder<NavBarViewModel>(
                 builder: (controller) => controller.currentScreen,
               ),
               bottomNavigationBar: const BottomNavigationBarWidget(),
