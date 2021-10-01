@@ -13,7 +13,7 @@ class CustomTextFormField extends StatelessWidget {
 
   final String text, hint;
   final Function(String?) onSave;
-  final String Function(String?) validator;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,8 @@ class CustomTextFormField extends StatelessWidget {
           color: Colors.grey.shade900,
         ),
         TextFormField(
+          textInputAction: TextInputAction.next,
+          obscureText: text == 'Email' || text == 'Name' ? false : true,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(
