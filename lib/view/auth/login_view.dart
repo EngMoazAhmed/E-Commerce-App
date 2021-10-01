@@ -1,10 +1,10 @@
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
 import 'package:e_commerce_app/view/auth/register_view.dart';
-import 'package:e_commerce_app/view/widgets/custom_button.dart';
-import 'package:e_commerce_app/view/widgets/custom_signin_button.dart';
-import 'package:e_commerce_app/view/widgets/custom_text.dart';
-import 'package:e_commerce_app/view/widgets/custom_text_form_field.dart';
+import 'package:e_commerce_app/view/widgets/auth/custom_button.dart';
+import 'package:e_commerce_app/view/widgets/auth/custom_signin_button.dart';
+import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
+import 'package:e_commerce_app/view/widgets/auth/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -39,7 +39,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                           transition: Transition.leftToRight),
                       child: const CustomText(
                         text: 'Sign Up',
-                        color: kPrimaryColor,
+                        fontColor: kPrimaryColor,
                         fontSize: 18,
                       ),
                     ),
@@ -51,7 +51,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                 const CustomText(
                   text: 'Sign in to Continue',
                   fontSize: 14,
-                  color: Colors.grey,
+                  fontColor: Colors.grey,
                 ),
                 const SizedBox(
                   height: 30,

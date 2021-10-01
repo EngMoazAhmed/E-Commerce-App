@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'custom_text.dart';
+import '../common/custom_text.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
@@ -22,7 +22,7 @@ class CustomTextFormField extends StatelessWidget {
         CustomText(
           text: text,
           fontSize: 14,
-          color: Colors.grey.shade900,
+          fontColor: Colors.grey.shade900,
         ),
         TextFormField(
           textInputAction: TextInputAction.next,

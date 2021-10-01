@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'custom_text.dart';
+import '../common/custom_text.dart';
 
 class CustomSignInButton extends StatelessWidget {
   const CustomSignInButton({

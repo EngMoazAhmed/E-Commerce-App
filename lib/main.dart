@@ -1,6 +1,6 @@
 import 'package:e_commerce_app/utils/bindings.dart';
 import 'package:e_commerce_app/view/auth/register_view.dart';
-import 'package:e_commerce_app/view/login_control_view.dart';
+import 'package:e_commerce_app/view/auth/login_control_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,9 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Scaffold(
-        body: LoginControlView(),
-      ),
+      home: const LoginControlView(),
     );
   }
 }

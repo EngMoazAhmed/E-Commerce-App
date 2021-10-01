@@ -1,10 +1,10 @@
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
 import 'package:e_commerce_app/view/auth/login_view.dart';
-import 'package:e_commerce_app/view/widgets/custom_button.dart';
-import 'package:e_commerce_app/view/widgets/custom_signin_button.dart';
-import 'package:e_commerce_app/view/widgets/custom_text.dart';
-import 'package:e_commerce_app/view/widgets/custom_text_form_field.dart';
+import 'package:e_commerce_app/view/widgets/auth/custom_button.dart';
+import 'package:e_commerce_app/view/widgets/auth/custom_signin_button.dart';
+import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
+import 'package:e_commerce_app/view/widgets/auth/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

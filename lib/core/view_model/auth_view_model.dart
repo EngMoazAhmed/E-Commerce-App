@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:e_commerce_app/core/services/firestore_user.dart';
 import 'package:e_commerce_app/model/user_model.dart';
-import 'package:e_commerce_app/view/home_view.dart';
-import 'package:e_commerce_app/view/login_control_view.dart';
+import 'package:e_commerce_app/view/home/home_view.dart';
+import 'package:e_commerce_app/view/auth/login_control_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,12 +12,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthViewModel extends GetxController {
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String? email, password, name;
 
-  Rxn<User> _user = Rxn<User>();
+  final Rxn<User> _user = Rxn<User>();
 
   User? get user => _user.value;
 
@@ -27,15 +27,7 @@ class AuthViewModel extends GetxController {
     _user.bindStream(_auth.authStateChanges());
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
 
   //Google SignIn
   void signInWithGoogle() async {
@@ -133,7 +125,7 @@ class AuthViewModel extends GetxController {
               await _saveUserToFirestore(userCredential));
 
       //Navigate to Home View
-      Get.offAll(() => const HomeView());
+      Get.offAll(() =>  HomeView());
     } on FirebaseAuthException catch (e) {
       // if (e.code == 'weak-password') {
       //   print('The password provided is too weak.');
