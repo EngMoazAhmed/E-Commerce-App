@@ -3,7 +3,7 @@ import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ListViewCategory extends GetWidget<HomeViewModel> {
+class ListViewCategory extends StatelessWidget {
   const ListViewCategory({Key? key}) : super(key: key);
 
   // static const Map<String, String> _items = {

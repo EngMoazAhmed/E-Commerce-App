@@ -11,13 +11,13 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
-class HomeView extends GetWidget<HomeViewModel> {
+class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeViewModel>(
-      builder: (controller) => controller.isLoading.value
+      builder: (controller) => controller.loadingIndicator
           ? const Center(
               child: CircularProgressIndicator(),
             )
