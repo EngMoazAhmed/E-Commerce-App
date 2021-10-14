@@ -9,10 +9,11 @@ import 'package:get/get.dart';
 
 class HomeViewModel extends GetxController {
   @override
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    getCategories();
-    getBestSellingProducts();
+    _changeLoadingIndicator();
+    await getCategories();
+    await getBestSellingProducts();
   }
 
   final List<CategoryModel> _categoryModel = [];
@@ -28,7 +29,7 @@ class HomeViewModel extends GetxController {
   Future<void> getCategories() async {
     //as this function will run first - lets start the loadingIndicator here
     //true
-    _changeLoadingIndicator();
+    // _changeLoadingIndicator();
     try {
       await HomeService().getCategories().then(
         (value) {

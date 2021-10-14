@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/constants/colors.dart';
 import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
 import 'package:e_commerce_app/view/auth/login_view.dart';
 import 'package:e_commerce_app/view/widgets/auth/custom_button.dart';

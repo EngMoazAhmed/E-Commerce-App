@@ -9,13 +9,19 @@ class CustomText extends StatelessWidget {
     this.fontColor = Colors.black,
     this.alignment = Alignment.topLeft,
     this.fontWeight = FontWeight.normal,
+    this.textStyle,
+    this.textOverflow,
+    this.fontHeight = 1.5,
   }) : super(key: key);
 
   final String text;
+  final TextStyle? textStyle;
   final double fontSize;
+  final double fontHeight;
   final Color fontColor;
   final Alignment alignment;
   final FontWeight fontWeight;
+  final TextOverflow? textOverflow;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +29,14 @@ class CustomText extends StatelessWidget {
       alignment: alignment,
       child: Text(
         text,
-        style: TextStyle(
-          color: fontColor,
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          overflow: TextOverflow.ellipsis,
-        ),
+        style: textStyle ??
+            TextStyle(
+              color: fontColor,
+              fontSize: fontSize,
+              fontWeight: fontWeight,
+              overflow: textOverflow,
+              height: fontHeight,
+            ),
       ),
     );
   }

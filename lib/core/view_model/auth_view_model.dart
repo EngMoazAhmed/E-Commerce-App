@@ -1,8 +1,7 @@
 import 'dart:io';
-
+import 'package:e_commerce_app/core/database/local_data_storage.dart';
 import 'package:e_commerce_app/core/services/firestore_user.dart';
 import 'package:e_commerce_app/model/user_model.dart';
-import 'package:e_commerce_app/view/home/home_view.dart';
 import 'package:e_commerce_app/view/auth/login_control_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,8 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthViewModel extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  final LocalDataStorage _localDataStorage = Get.find<LocalDataStorage>();
 
   String? email, password, name;
 
@@ -82,15 +83,29 @@ class AuthViewModel extends GetxController {
   }
 
   //email & password
-  void signInWithEmailAndPassword() async {
+  Future<void> signInWithEmailAndPassword() async {
     try {
-      UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(
         email: email!.trim(),
         password: password!,
-      );
-      //Navigate to Home
-      Get.offAll(() => HomeView());
+      )
+          .then((credentials) async {
+        //in case the user deleted the app along with it's local data
+        // or signed out and lost his/her local data
+        // he needs it back
+        //first we retrieve the data from the cloud
+        await FirestoreUser()
+            .getCurrentUser(credentials.user!.uid)
+            .then((userDocumentSnapshot) async {
+          // print('UserData : ${userDocumentSnapshot.data()}');
+          await _localDataStorage.setUserData(UserModel.fromJson(
+              userDocumentSnapshot.data() as Map<String, dynamic>?));
+        });
+        return credentials;
+      });
+      //Navigate to Control View
+      Get.offAll(() => const LoginControlView());
       // print(userCredential);
     } on SocketException {
       print('network error');
@@ -122,7 +137,7 @@ class AuthViewModel extends GetxController {
               await _saveUserToFirestore(userCredential));
 
       //Navigate to Home View
-      Get.offAll(() => HomeView());
+      Get.offAll(() => const LoginControlView());
     } on FirebaseAuthException catch (e) {
       // if (e.code == 'weak-password') {
       //   print('The password provided is too weak.');
@@ -143,7 +158,14 @@ class AuthViewModel extends GetxController {
       profilePic: '',
     );
 
-    await FirestoreUser.addUserToFirestore(userModel);
+    //Save the userData to the CloudFireStore
+    await FirestoreUser().addUserToFirestore(userModel);
+    //save the userData to the LocalDataStorage Too
+    await _saveUserToLocalStorage(userModel);
+  }
+
+  Future<void> _saveUserToLocalStorage(UserModel userModel) async {
+    await _localDataStorage.setUserData(userModel);
   }
 
   //FirebaseException Handling
@@ -191,7 +213,13 @@ class AuthViewModel extends GetxController {
   }
 
   void signOut() {
+    //sign out from google account
+    GoogleSignIn().signOut();
+    //sign out from email/password
     _auth.signOut();
+    //clear the local user data storage
+    _localDataStorage.deleteUserData();
+    //reset the state user value so we can go back to the login screen
     _user.value = null;
     print(user);
     Get.offAll(() => const LoginControlView());

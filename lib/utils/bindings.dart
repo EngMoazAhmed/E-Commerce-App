@@ -1,4 +1,7 @@
+import 'package:e_commerce_app/core/database/local_data_storage.dart';
+import 'package:e_commerce_app/core/view_model/account_view_model.dart';
 import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
+import 'package:e_commerce_app/core/view_model/cart_view_model.dart';
 import 'package:e_commerce_app/core/view_model/home_view_model.dart';
 import 'package:e_commerce_app/core/view_model/nav_bar_view_model.dart';
 import 'package:get/get.dart';
@@ -9,5 +12,9 @@ class Binding extends Bindings {
     Get.lazyPut(() => AuthViewModel());
     Get.lazyPut(() => NavBarViewModel());
     Get.lazyPut(() => HomeViewModel());
+    Get.lazyPut(() => AccountViewModel());
+    Get.lazyPut(() => LocalDataStorage());
+    // ignore: await_only_futures
+    Get.putAsync(() async => await CartViewModel());
   }
 }

@@ -1,5 +1,6 @@
-import 'package:e_commerce_app/constants.dart';
+import 'package:e_commerce_app/constants/colors.dart';
 import 'package:e_commerce_app/core/view_model/home_view_model.dart';
+import 'package:e_commerce_app/view/details/details_view.dart';
 import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,18 +36,27 @@ class ListViewProduct extends StatelessWidget {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  // height: 150,
-                  width: width * 0.4,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Image.network(
-                    controller.productModel[index].image.toString(),
-                    fit: BoxFit.fill,
-                    // height: 10,
-                    // width: 10,
+                GestureDetector(
+                  onTap: () {
+                    Get.to(
+                      () => DetailsView(
+                        productModel: controller.productModel[index],
+                      ),
+                    );
+                  },
+                  child: Container(
+                    // height: 150,
+                    width: width * 0.4,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Image.network(
+                      controller.productModel[index].image.toString(),
+                      fit: BoxFit.fill,
+                      // height: 10,
+                      // width: 10,
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -65,13 +75,14 @@ class ListViewProduct extends StatelessWidget {
                     text: controller.productModel[index].description.toString(),
                     fontSize: 14,
                     fontColor: Colors.grey,
+                    textOverflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 CustomText(
-                  text: '\$ ' + controller.productModel[index].price.toString(),
+                  text: controller.productModel[index].price.toString(),
                   fontSize: 16,
                   fontColor: kPrimaryColor,
                 ),

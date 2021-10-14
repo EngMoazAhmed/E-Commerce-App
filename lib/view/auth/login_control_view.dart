@@ -18,6 +18,7 @@ class LoginControlView extends GetWidget<AuthViewModel> {
           ? LoginView()
           : Scaffold(
               body: GetBuilder<NavBarViewModel>(
+                init: NavBarViewModel(),
                 builder: (controller) => controller.currentScreen,
               ),
               bottomNavigationBar: const BottomNavigationBarWidget(),
