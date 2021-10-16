@@ -14,7 +14,7 @@ class Binding extends Bindings {
     Get.lazyPut(() => HomeViewModel());
     Get.lazyPut(() => AccountViewModel());
     Get.lazyPut(() => LocalDataStorage());
-    // ignore: await_only_futures
-    Get.putAsync(() async => await CartViewModel());
+    Get.lazyPut(() => CartViewModel());
+    Get.lazyPut(() => LocalDataStorage());
   }
 }

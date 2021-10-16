@@ -1,8 +1,6 @@
-import 'package:e_commerce_app/constants/colors.dart';
 import 'package:e_commerce_app/core/view_model/cart_view_model.dart';
 import 'package:e_commerce_app/model/cart_product_model.dart';
 import 'package:e_commerce_app/model/product_model.dart';
-import 'package:e_commerce_app/view/widgets/auth/custom_button.dart';
 import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
 import 'package:e_commerce_app/view/widgets/common/details_action_button.dart';
 import 'package:e_commerce_app/view/widgets/detalis/custom_rounded_container.dart';
@@ -23,7 +21,6 @@ class DetailsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _size = MediaQuery.of(context).size;
     return Scaffold(
       body: Column(
         children: [

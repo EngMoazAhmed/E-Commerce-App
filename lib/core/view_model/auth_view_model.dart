@@ -10,8 +10,16 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
+enum AuthType {
+  emailSignIn,
+  googleSignIn,
+  facebookSignIn,
+}
+
 class AuthViewModel extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  AuthType _signInType = AuthType.emailSignIn;
 
   final LocalDataStorage _localDataStorage = Get.find<LocalDataStorage>();
 
@@ -29,6 +37,8 @@ class AuthViewModel extends GetxController {
 
   //Google SignIn
   void signInWithGoogle() async {
+    //define signIn Method
+    _signInType = AuthType.googleSignIn;
     try {
       //Trigger the authentication flow
       final googleUser = await GoogleSignIn().signIn();
@@ -59,6 +69,8 @@ class AuthViewModel extends GetxController {
   }
 
   void signInWithFacebook() async {
+    //define signIn Method
+    _signInType = AuthType.facebookSignIn;
     try {
       // Trigger the sign-in flow
       final LoginResult loginResult = await FacebookAuth.instance.login();
@@ -84,8 +96,10 @@ class AuthViewModel extends GetxController {
 
   //email & password
   Future<void> signInWithEmailAndPassword() async {
+    //define signIn Method
+    _signInType = AuthType.emailSignIn;
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
+      await FirebaseAuth.instance
           .signInWithEmailAndPassword(
         email: email!.trim(),
         password: password!,
@@ -127,6 +141,8 @@ class AuthViewModel extends GetxController {
   }
 
   void signUpWithEmailAndPassword() async {
+    //define signIn Method
+    _signInType = AuthType.emailSignIn;
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
@@ -155,8 +171,18 @@ class AuthViewModel extends GetxController {
       userId: userCredential.user?.uid,
       name: name ?? userCredential.user?.displayName,
       email: userCredential.user?.email,
-      profilePic: '',
+      profilePic: _signInType == AuthType.emailSignIn
+          ? 'default'
+          //google login
+          : _signInType == AuthType.googleSignIn
+              ? userCredential.user?.photoURL
+                  ?.replaceAll('s96-c', 's400-c')
+                  .toString()
+              //facebook login
+              : '${userCredential.user?.photoURL}?height=500',
     );
+
+    // print(userCredential.user?.photoURL);
 
     //Save the userData to the CloudFireStore
     await FirestoreUser().addUserToFirestore(userModel);

@@ -1,6 +1,4 @@
-import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
 import 'package:e_commerce_app/core/view_model/home_view_model.dart';
-import 'package:e_commerce_app/view/widgets/home/bottom_navigation_bar.dart';
 import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
 import 'package:e_commerce_app/view/widgets/home/custom_text_field.dart';
 import 'package:e_commerce_app/view/widgets/home/list_view_category.dart';

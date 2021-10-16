@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 
 class NavBarViewModel extends GetxController {
   int _navBarIndex = 0;
-  Widget _currentScreen = HomeView();
+  Widget _currentScreen = const HomeView();
 
   get currentScreen => _currentScreen;
   get navBarIndex => _navBarIndex;
@@ -15,16 +15,16 @@ class NavBarViewModel extends GetxController {
     _navBarIndex = newIndex;
     switch (navBarIndex) {
       case 0:
-        _currentScreen = HomeView();
+        _currentScreen = const HomeView();
         break;
       case 1:
-        _currentScreen = CartView();
+        _currentScreen = const CartView();
         break;
       case 2:
-        _currentScreen = AccountView();
+        _currentScreen = const AccountView();
         break;
       default:
-        _currentScreen = HomeView();
+        _currentScreen = const HomeView();
         break;
     }
     update();
