@@ -11,17 +11,20 @@ class DetailsActionButton extends StatelessWidget {
     required this.lowerText,
     required this.buttonText,
     required this.function,
+    this.textColor = Colors.white,
+    this.buttonColor = kPrimaryColor,
   }) : super(key: key);
 
   final String upperText;
   final String lowerText;
   final String buttonText;
+  final Color textColor, buttonColor;
   final void Function() function;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -42,10 +45,12 @@ class DetailsActionButton extends StatelessWidget {
           ),
           CustomButton(
             text: buttonText,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 40,
-              vertical: 15,
-            ),
+            textColor: textColor,
+            buttonColor: buttonColor,
+            // padding: const EdgeInsets.symmetric(
+            //   horizontal: 40,
+            //   vertical: 15,
+            // ),
             onPressed: function,
           ),
         ],

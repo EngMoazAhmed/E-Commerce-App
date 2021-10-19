@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/constants/colors.dart';
 import 'package:e_commerce_app/core/view_model/cart_view_model.dart';
+import 'package:e_commerce_app/view/checkout/checkout_view.dart';
 import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
 import 'package:e_commerce_app/view/widgets/common/details_action_button.dart';
 import 'package:flutter/material.dart';
@@ -138,7 +139,7 @@ class CartView extends GetWidget<CartViewModel> {
                     upperText: 'TOTAL',
                     lowerText: '\$${controller.totalPrice}',
                     buttonText: 'CHECKOUT',
-                    function: () {},
+                    function: () => Get.to(() => const CheckoutView()),
                   );
                 }),
               ],

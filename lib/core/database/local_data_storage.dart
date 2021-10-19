@@ -25,7 +25,7 @@ class LocalDataStorage extends GetxController {
     }
   }
 
-  Future<UserModel> _getUserData() async {
+  Future<UserModel>? _getUserData() async {
     SharedPreferences _sharedPreferences =
         await SharedPreferences.getInstance();
     return UserModel.fromJson(
