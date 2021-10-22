@@ -1,8 +1,6 @@
 import 'package:e_commerce_app/constants/checkout.dart';
-import 'package:e_commerce_app/constants/colors.dart';
 import 'package:e_commerce_app/core/view_model/checkout_view_model.dart';
 import 'package:e_commerce_app/view/widgets/checkout/custom_radio_tile.dart';
-import 'package:e_commerce_app/view/widgets/common/custom_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

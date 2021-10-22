@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/utils/binding.dart';
 import 'package:e_commerce_app/view/auth/login_control_view.dart';
-import 'package:e_commerce_app/view/checkout/checkout_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

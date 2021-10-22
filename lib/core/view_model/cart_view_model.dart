@@ -83,5 +83,32 @@ class CartViewModel extends GetxController {
     }
   }
 
-  //
+  //Delete a certain cart product item
+  deleteCartItem(CartProductModel cartProduct) async {
+    //Check all products exist in the cart
+    for (CartProductModel product in cartProductModel) {
+      //if the product u wanna add is different than what's inside the cart in terms of productID (not the same product) then add it.
+      if (product.productId != cartProduct.productId) {
+        return;
+      }
+    }
+
+    //delete from database
+    await cDBHelper.delete(cartProduct);
+    //delete from cart view
+    _cartProductModel.remove(cartProduct);
+
+    //update UI
+    update();
+  }
+
+  //Delete all products in the cart
+  deleteAllProductsInCart() async {
+    //delete from database
+    await cDBHelper.deleteAll();
+    //delete from cart view
+    _cartProductModel.clear();
+    //update UI
+    update();
+  }
 }

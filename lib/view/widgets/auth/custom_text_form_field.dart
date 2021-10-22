@@ -26,7 +26,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         TextFormField(
           textInputAction: TextInputAction.next,
-          obscureText: text == 'Email' || text == 'Name' ? false : true,
+          obscureText: text == 'Password' ? true : false,
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: const TextStyle(

@@ -13,37 +13,37 @@ class CartView extends GetWidget<CartViewModel> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: controller.cartProductModel.isEmpty
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(
-                  'assets/images/empty_cart.svg',
-                  height: 200,
-                  width: 200,
-                ),
-                SizedBox(
-                  height: Get.width * 0.15,
-                ),
-                CustomText(
-                  text: 'Empty Cart',
-                  alignment: Alignment.center,
-                  fontSize: Get.width * 0.1,
-                  // fontColor: kPrimaryColor,
-                ),
-              ],
-            )
-          : Column(
-              children: [
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 50,
-                      left: 20,
-                    ),
-                    child: GetBuilder<CartViewModel>(builder: (_) {
-                      return controller.isLoading.value
+    return GetBuilder<CartViewModel>(builder: (_) {
+      return Scaffold(
+        body: controller.cartProductModel.isEmpty
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    'assets/images/empty_cart.svg',
+                    height: 200,
+                    width: 200,
+                  ),
+                  SizedBox(
+                    height: Get.width * 0.15,
+                  ),
+                  CustomText(
+                    text: 'Empty Cart',
+                    alignment: Alignment.center,
+                    fontSize: Get.width * 0.1,
+                    // fontColor: kPrimaryColor,
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 50,
+                        left: 20,
+                      ),
+                      child: controller.isLoading.value
                           ? const Center(
                               child: CircularProgressIndicator(),
                             )
@@ -130,20 +130,18 @@ class CartView extends GetWidget<CartViewModel> {
                                   ),
                                 ],
                               ),
-                            );
-                    }),
+                            ),
+                    ),
                   ),
-                ),
-                GetBuilder<CartViewModel>(builder: (_) {
-                  return DetailsActionButton(
+                  DetailsActionButton(
                     upperText: 'TOTAL',
                     lowerText: '\$${controller.totalPrice}',
                     buttonText: 'CHECKOUT',
-                    function: () => Get.to(() => const CheckoutView()),
-                  );
-                }),
-              ],
-            ),
-    );
+                    function: () => Get.to(() => CheckoutView()),
+                  ),
+                ],
+              ),
+      );
+    });
   }
 }

@@ -3,7 +3,6 @@ import 'package:e_commerce_app/core/services/home_service.dart';
 import 'package:e_commerce_app/core/view_model/auth_view_model.dart';
 import 'package:e_commerce_app/model/category_model.dart';
 import 'package:e_commerce_app/model/product_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
@@ -34,13 +33,13 @@ class HomeViewModel extends GetxController {
       await HomeService().getCategories().then(
         (value) {
           // print(value.docs[0].data());
-          value.forEach((element) {
+          for (var element in value) {
             _categoryModel.add(
               CategoryModel.fromJson(
                 element.data() as Map<String, dynamic>,
               ),
             );
-          });
+          }
           update();
           // print(categoryModel.length);
         },
@@ -59,13 +58,13 @@ class HomeViewModel extends GetxController {
   Future<void> getBestSellingProducts() async {
     try {
       await HomeService().getBestSelling().then((value) {
-        value.forEach((element) {
+        for (var element in value) {
           _productModel.add(
             ProductModel.fromJson(
               element.data() as Map<String, dynamic>,
             ),
           );
-        });
+        }
       });
     } on PlatformException catch (e) {
       AuthViewModel.handleFirebaseAuthException(e.code);

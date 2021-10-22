@@ -45,11 +45,11 @@ class CircleWidget extends StatelessWidget {
                 : controller.currentScreen == CheckoutType.address &&
                         circleText == 'Address'
                     ? kPrimaryColor
-                    : controller.currentScreen == CheckoutType.summary &&
-                            circleText == 'Summary'
+                    : controller.currentScreen == CheckoutType.payment &&
+                            circleText == 'Payment'
                         ? kPrimaryColor
-                        : controller.currentScreen == CheckoutType.finished &&
-                                circleText == 'Finished'
+                        : controller.currentScreen == CheckoutType.summary &&
+                                circleText == 'Summary'
                             ? kPrimaryColor
                             : Colors.grey,
           );

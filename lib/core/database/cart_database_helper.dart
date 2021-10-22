@@ -70,4 +70,22 @@ class CartDatabaseHelper {
       whereArgs: [cartModel.productId],
     );
   }
+
+  //Delete Cart Item
+  Future<void> delete(CartProductModel cartProductModel) async {
+    Database dbClient = await database;
+
+    await dbClient.delete(
+      kTableCartProduct,
+      where: '$kColumnproductId = ?',
+      whereArgs: [cartProductModel.productId],
+    );
+  }
+
+  //Delete all Cart Items
+  Future<void> deleteAll() async {
+    Database dbClient = await database;
+
+    await dbClient.delete(kTableCartProduct);
+  }
 }

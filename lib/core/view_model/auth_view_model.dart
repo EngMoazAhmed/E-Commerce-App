@@ -64,7 +64,7 @@ class AuthViewModel extends GetxController {
       handleFirebaseAuthException(e.code);
       return;
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 
@@ -90,7 +90,7 @@ class AuthViewModel extends GetxController {
     } on PlatformException catch (e) {
       handleFirebaseAuthException(e.code);
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 
@@ -122,7 +122,7 @@ class AuthViewModel extends GetxController {
       Get.offAll(() => const LoginControlView());
       // print(userCredential);
     } on SocketException {
-      print('network error');
+      //print('network error');
       return;
     } on FirebaseAuthException catch (e) {
       // if (e.code == 'user-not-found') {
@@ -162,7 +162,7 @@ class AuthViewModel extends GetxController {
       // }
       handleFirebaseAuthException(e.code);
     } catch (e) {
-      print(e);
+      //print(e);
     }
   }
 
@@ -247,7 +247,7 @@ class AuthViewModel extends GetxController {
     _localDataStorage.deleteUserData();
     //reset the state user value so we can go back to the login screen
     _user.value = null;
-    print(user);
+    //print(user);
     Get.offAll(() => const LoginControlView());
   }
 }
