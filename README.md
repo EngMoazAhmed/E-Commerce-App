@@ -1,16 +1,39 @@
-# e_commerce_app
+# E-Commerce App
 
-A new Flutter project.
 
-## Getting Started
+## Screenshots:
 
-This project is a starting point for a Flutter application.
+=> Login
+![Preview](screenshots/SignIn.png)
 
-A few resources to get you started if this is your first Flutter project:
+=> Sign Up
+![Preview](screenshots/SignUp.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+=> Account
+![Preview](screenshots/Account.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+=> Home Page
+![Preview](screenshots/Home.png)
+
+=> Product Details
+![Preview](screenshots/Product.png)
+
+=> Cart
+![Preview](screenshots/EmptyCart.png)
+![Preview](screenshots/Cart.png)
+
+=> Order
+![Preview](screenshots/Delivery.png)
+![Preview](screenshots/Address.png)
+![Preview](screenshots/Payment.png)
+![Preview](screenshots/Summary.png)
+
+
+### Design Credits
+Pesa Coder : https://github.com/PesaCoder/
+
+I took the design and implemented it from scratch.
+
+
+
+
