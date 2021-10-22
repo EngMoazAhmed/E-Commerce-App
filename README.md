@@ -4,29 +4,29 @@
 ## Screenshots:
 
 ## Login
-![Preview](screenshots/SignIn.png =300x300)
+![Preview](screenshots/SignIn.png)
 
 ## Sign Up
-![Preview](screenshots/SignUp.png =300x300)
+![Preview](screenshots/SignUp.png)
 
 ## Account
-![Preview](screenshots/Account.png =300x300)
+![Preview](screenshots/Account.png)
 
 ## Home Page
-![Preview](screenshots/Home.png =300x300)
+![Preview](screenshots/Home.png)
 
 ## Product Details
-![Preview](screenshots/Product.png =300x300)
+![Preview](screenshots/Product.png)
 
 ## Cart
-![Preview](screenshots/EmptyCart.png =300x300)
-![Preview](screenshots/Cart.png =300x300)
+![Preview](screenshots/EmptyCart.png)
+![Preview](screenshots/Cart.png)
 
 ## Order
-![Preview](screenshots/Delivery.png =300x300)
-![Preview](screenshots/Address.png =300x300)
-![Preview](screenshots/Payment.png =300x300)
-![Preview](screenshots/Summary.png =300x300)
+![Preview](screenshots/Delivery.png)
+![Preview](screenshots/Address.png)
+![Preview](screenshots/Payment.png)
+![Preview](screenshots/Summary.png)
 
 
 ### Design Credits
